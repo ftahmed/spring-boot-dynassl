@@ -1,0 +1,15 @@
+server:
+  port: 8443
+  ssl:
+    key-store: "${user.home}/.keystore.p12"
+    keyStoreType: "PKCS12"
+    key-store-password: "M3taf0ur"
+    key-password: "M3taf0ur"
+  tomcat.mbeanregistry.enabled: true
+spring:
+  jmx:
+    unique-names: true
+management:
+  endpoints:
+    jmx:
+      domain: "demo.dynassl"
