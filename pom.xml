@@ -26,6 +26,14 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jolokia</groupId>
+			<artifactId>jolokia-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -36,6 +44,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>
+					  -Dcom.sun.management.jmxremote=true 
+					  -Dcom.sun.management.jmxremote.local.only=false 
+					  -Dcom.sun.management.jmxremote.port=9010 
+					  -Dcom.sun.management.jmxremote.rmi.port=9010 
+					  -Dcom.sun.management.jmxremote.authenticate=false 
+					  -Dcom.sun.management.jmxremote.ssl=false 
+					</jvmArguments>
+				  </configuration>
 			</plugin>
 		</plugins>
 	</build>

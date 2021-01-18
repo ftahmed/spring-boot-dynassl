@@ -1,0 +1,3 @@
+[submodule "jmxterm"]
+	path = jmxterm
+	url = https://github.com/jiaqi/jmxterm.git
