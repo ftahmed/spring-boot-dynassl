@@ -19,7 +19,7 @@ null
 
 ## Jolokia
 
-Enabled Actuator with Jolokia. Invoke Jolokia URL.
+Enabled Spring Boot Actuator with Jolokia. Invoke Jolokia URL.
 
 ```
 $ curl -sk "https://localhost:8443/actuator/jolokia/search/Tomcat:type=ProtocolHandler,port=*" | jq .
@@ -51,9 +51,17 @@ $ curl -sk "https://localhost:8443/actuator/jolokia/exec/Tomcat:type=ProtocolHan
 
 ## Programatically
 
-Exposed an endpoint `/lecr` in `GreetingController`.
+### JMX 
+Exposed an endpoint `/jmxreload` in `SslController`.
 ```
-$ curl -sk https://localhost:8443/lecr
+$ curl -sk https://localhost:8443/jmxreload
+OK
+```
+
+### Spring Boot
+Implemented `TomcatConnectorCustomizer`. Exposed an endpoint `/tccreload` in `SslController`.
+```
+$ curl -sk https://localhost:8443/tccreload
 OK
 ```
 

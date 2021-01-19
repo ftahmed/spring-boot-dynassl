@@ -33,18 +33,14 @@ public class DynasslApplication {
                 context.addConstraint(securityConstraint);
             }
         };
+		tomcat.addConnectorCustomizers(sslConfigCustomizer(tomcat));
 		tomcat.addAdditionalTomcatConnectors(redirectConnector());
-		TomcatConnectorCustomizer c = new TomcatConnectorCustomizer() {
-			@Override
-			public void customize(Connector connector) {
-				//
-				if (connector.getSecure() && connector.getProtocolHandler() instanceof Http11NioProtocol) {
-					//
-				}
-			}
-		};
-		tomcat.addConnectorCustomizers(c);
         return tomcat;
+    }
+
+    @Bean
+    public TomcatConnectorCustomizer sslConfigCustomizer(ServletWebServerFactory servletWebServerFactory) {
+        return new SslConfigCustomizer(servletWebServerFactory);
     }
 
     private Connector redirectConnector() {
